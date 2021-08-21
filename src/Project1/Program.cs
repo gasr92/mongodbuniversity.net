@@ -20,6 +20,11 @@ namespace Project1
                            .Limit(10)
                            .ToList();
 
+            foreach (var r in result)
+            {
+                Console.WriteLine(r.GetValue("title"));
+            }
+
             Console.WriteLine(result);
         }
     }
