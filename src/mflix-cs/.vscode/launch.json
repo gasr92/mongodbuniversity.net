@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/M220N/bin/Debug/netcoreapp3.1/M220N.dll",
+            "program": "${workspaceFolder}/M220N/bin/Debug/netcoreapp5.0/M220N.dll",
             "args": [],
             "cwd": "${workspaceFolder}/M220N",
             "stopAtEntry": false,

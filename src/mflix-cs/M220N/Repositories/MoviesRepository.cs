@@ -114,14 +114,6 @@ namespace M220N.Repositories
             params string[] countries
             )
         {
-            // TODO Ticket: Projection - Search for movies by ``country`` and use projection to
-            // return only the ``Id`` and ``Title`` fields
-            //
-            //return await _moviesCollection
-            //   .Find(...)
-            //   .Project(...)
-            //   .ToListAsync(cancellationToken);
-
             var filter = Builders<Movie>.Filter.AnyIn(x => x.Countries, countries);
             var projection = Builders<Movie>.Projection
                 .Include(x => x.Id)
@@ -129,11 +121,13 @@ namespace M220N.Repositories
 
             var result = await _moviesCollection
                 .Find(filter)
-                .Project(projection)
+                .SortByDescending(m => m.Title)
+                //.Project(projection)
+                .Project<MovieByCountryProjection>(projection)
                 .SortByDescending(x => x.Title)
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
 
-            return null;
+            return result;
         }
 
         /// <summary>
