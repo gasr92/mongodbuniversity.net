@@ -192,15 +192,13 @@ namespace M220N.Repositories
             string sortKey = DefaultSortKey, int limit = DefaultMoviesPerPage,
             int page = 0, params string[] genres)
         {
-            var returnValue = new List<Movie>();
-
             var sort = new BsonDocument(sortKey, DefaultSortOrder);
-
-            // TODO Ticket: Enable filtering of movies by genre.
-            // If you get stuck see the ``GetMoviesByCastAsync`` method above.
-            /*return await _moviesCollection
-               .Find(...)
-               .ToListAsync(cancellationToken);*/
+            var result = await _moviesCollection
+                .Find(Builders<Movie>.Filter.In("Genres", genres))
+                .Limit(limit)
+                .Skip(page * limit)
+                .Sort(sort)
+                .ToListAsync(cancellationToken);
 
             // // TODO Ticket: Paging
             // TODO Ticket: Paging
@@ -208,7 +206,7 @@ namespace M220N.Repositories
             // include pagination. Refer to the other methods in this class
             // if you need a hint.
 
-            return returnValue;
+            return result;
         }
 
         /// <summary>
