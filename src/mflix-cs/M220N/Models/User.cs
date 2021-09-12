@@ -7,6 +7,17 @@ namespace M220N.Models
 {
     public class User
     {
+        public User()
+        {
+            
+        }
+        public User(string name, string email, string hashedPassword)
+        {
+            Name = name;
+            Email = email;
+            HashedPassword = hashedPassword;
+        }
+
         [BsonElement("_id")]
         [JsonProperty("_id")]
         [BsonId]
