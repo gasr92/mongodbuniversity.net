@@ -105,6 +105,9 @@ namespace M220N.Repositories
                 // Return null if the exception is due to a bad/missing Id. Otherwise,
                 // throw.
 
+                if(ex.Message.Contains("is not a valid 24 digit hex string"))
+                    return null;
+
                 throw;
             }
         }
