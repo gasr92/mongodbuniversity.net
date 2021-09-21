@@ -11,6 +11,7 @@
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/M220N/bin/Debug/netcoreapp5.0/M220N.dll",
+            //"program": "${workspaceFolder}/Migrator/bin/Debug/netcoreapp5.0/Migrator.dll",
             "args": [],
             "cwd": "${workspaceFolder}/M220N",
             "stopAtEntry": false,
